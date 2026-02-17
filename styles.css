@@ -1,0 +1,131 @@
+﻿@import url('./variables.css');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 1.5rem;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  h1 {
+    margin: 0;
+    font-family: 'Press Start 2P', cursive;
+    font-size: clamp(0.9rem, 2.2vw, 1.3rem);
+    letter-spacing: 1px;
+  }
+}
+
+.theme-toggle {
+  border: 0;
+  background: var(--surface-strong);
+  color: var(--text);
+  padding: 0.6rem 0.9rem;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  border: 1px solid color-mix(in srgb, var(--text) 18%, transparent);
+}
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.zone {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: minmax(110px, auto);
+  gap: 0.75rem;
+
+  .card {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 0.75rem;
+    box-shadow: var(--shadow);
+    border: 1px solid color-mix(in srgb, var(--text) 12%, transparent);
+    overflow: hidden;
+
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    p {
+      margin: 0.35rem 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      filter: none;
+    }
+  }
+}
+
+.hero {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(110px, 1fr) 1.2fr;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--surface-strong);
+}
+
+.tall {
+  grid-row: span 2;
+}
+
+.wide {
+  grid-column: 1 / -1;
+  background: var(--surface);
+}
+
+.mini {
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.zone-kanto { --accent: #ffd54f; --accent-2: #42a5f5; }
+.zone-johto { --accent: #ff8a65; --accent-2: #66bb6a; }
+.zone-hoenn { --accent: #4fc3f7; --accent-2: #ab47bc; }
+
+@media (max-width: 700px) {
+  .bento {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0d1220;
+    --surface: #151c2f;
+    --surface-strong: #1e2844;
+    --text: #f1f5ff;
+    --muted: #bac7ee;
+    --accent: #ff6f61;
+    --accent-2: #6ec6ff;
+    --ring: rgba(110, 198, 255, 0.32);
+    --shadow: 0 14px 34px rgba(0, 0, 0, 0.42);
+  }
+}
